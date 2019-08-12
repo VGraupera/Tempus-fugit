@@ -2,6 +2,8 @@
 
 Tempus fugit is a Latin phrase, usually translated into English as "time flies".
 
+[Demo](https://tempus-fugit.netlify.com/)
+
 ## Credits
 
 Inspired by Progress Bar OSX.
