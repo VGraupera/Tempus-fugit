@@ -2,6 +2,12 @@ import React from "react";
 import { Client as Styletron } from "styletron-engine-atomic";
 import { Provider as StyletronProvider, DebugEngine } from "styletron-react";
 import { LightTheme, BaseProvider, styled } from "baseui";
+import {
+  HeaderNavigation,
+  ALIGN,
+  StyledNavigationItem as NavigationItem,
+  StyledNavigationList as NavigationList
+} from "baseui/header-navigation";
 
 import DayLeft from "./components/DayLeft";
 import MonthLeft from "./components/MonthLeft";
@@ -23,6 +29,11 @@ export default function App() {
   return (
     <StyletronProvider value={engine} debug={debug} debugAfterHydration>
       <BaseProvider theme={LightTheme}>
+        <HeaderNavigation>
+          <NavigationList $align={ALIGN.left}>
+            <NavigationItem>Tempus Fugit</NavigationItem>
+          </NavigationList>
+        </HeaderNavigation>
         <Centered>
           <DayLeft />
           <MonthLeft />
