@@ -22,10 +22,9 @@ const narrowItemProps = {
   }
 };
 
-const SUCCESS_VALUE = 100;
-
 export default class Metric extends React.Component {
   render() {
+    const metricValue = 100 - this.props.value;
     return (
       <FlexGrid
         flexGridColumnCount={2}
@@ -34,13 +33,20 @@ export default class Metric extends React.Component {
       >
         <FlexGridItem {...itemProps}>
           <ProgressBar
-            value={this.props.value}
-            successValue={SUCCESS_VALUE}
+            value={metricValue}
+            successValue={100}
             overrides={{
               BarProgress: {
                 style: ({ $theme, $value }) => {
+                  let color = $theme.colors.positive;
+                  if ($value < 20) {
+                    color = $theme.colors.warning;
+                  }
+                  if ($value < 10) {
+                    color = $theme.colors.negative;
+                  }
                   return {
-                    backgroundColor: $theme.colors.positive
+                    backgroundColor: color
                   };
                 }
               },
@@ -53,7 +59,7 @@ export default class Metric extends React.Component {
           />
         </FlexGridItem>
         <FlexGridItem {...narrowItemProps}>
-          <label>{`${this.props.displayName}: ${this.props.value}%`}</label>
+          <label>{`${this.props.displayName}: ${metricValue}%`}</label>
         </FlexGridItem>
       </FlexGrid>
     );
