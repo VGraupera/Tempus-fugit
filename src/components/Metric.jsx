@@ -31,7 +31,7 @@ export default class Metric extends React.Component {
         flexGridColumnGap="scale500"
         flexGridRowGap="scale800"
       >
-        <FlexGridItem {...itemProps}>
+        <FlexGridItem {...itemProps} onClick={this.props.onClick}>
           <ProgressBar
             value={metricValue}
             successValue={100}
