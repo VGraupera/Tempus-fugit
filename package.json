@@ -1,7 +1,9 @@
 {
-  "name": "countaway",
+  "name": "tempus-fugit",
   "version": "0.1.0",
   "private": true,
+  "author": "Vidal Graupera <vgraupera@gmail.com>",
+  "license": "MIT",
   "dependencies": {
     "baseui": "^8.16.0",
     "react": "^16.9.0",
