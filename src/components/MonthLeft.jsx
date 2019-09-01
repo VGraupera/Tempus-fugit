@@ -17,7 +17,9 @@ export default class MonthLeft extends React.Component {
     var dayOfMonth = new Date().getDate();
     var daysInMonth = this.daysInMonth(new Date());
 
-    this.setState({ value: Math.floor((dayOfMonth / daysInMonth) * 100) });
+    this.setState({
+      value: Math.floor(((dayOfMonth - 1) / daysInMonth) * 100)
+    });
   }
   render() {
     return <Metric displayName="Month" value={this.state.value} />;
