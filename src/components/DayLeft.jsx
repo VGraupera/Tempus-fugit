@@ -7,39 +7,39 @@ import {
   ModalButton
 } from "baseui/modal";
 import { Slider } from "baseui/slider";
-
 import Metric from "./Metric";
 
 export default class DayLeft extends React.Component {
-  state = { value: 0, isOpen: false, wakingHours: [0, 24] };
+  state = { isOpen: false, wakingHours: [0, 24] };
 
   componentDidMount() {
-    this.calculateDayLeft();
+    const wakingHours = JSON.parse(localStorage.getItem("wakingHours"));
+    if (wakingHours) {
+      this.setState({ wakingHours });
+    }
   }
   setOpen(value) {
     this.setState({ isOpen: value });
   }
   setWakingHours(value) {
     this.setState({ wakingHours: value });
-    this.calculateDayLeft();
+    localStorage.setItem("wakingHours", JSON.stringify(value));
   }
-  calculateDayLeft() {
+
+  render() {
     let hour = new Date().getHours();
-    let wakingHours = this.state.wakingHours;
+    const { wakingHours } = this.state;
     if (hour < wakingHours[0]) hour = wakingHours[0];
     if (hour > wakingHours[1]) hour = wakingHours[1];
-    this.setState({
-      value: Math.floor(
-        ((hour - wakingHours[0]) / (wakingHours[1] - wakingHours[0])) * 100
-      )
-    });
-  }
-  render() {
+    const value = Math.floor(
+      ((hour - wakingHours[0]) / (wakingHours[1] - wakingHours[0])) * 100
+    );
+
     return (
       <React.Fragment>
         <Metric
           displayName="Day"
-          value={this.state.value}
+          value={value}
           onClick={() => this.setOpen(true)}
         />
         <Modal onClose={() => this.setOpen(false)} isOpen={this.state.isOpen}>
