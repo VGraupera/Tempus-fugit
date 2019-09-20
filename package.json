@@ -5,10 +5,10 @@
   "author": "Vidal Graupera <vgraupera@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "baseui": "^8.16.0",
+    "baseui": "^9.4.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-scripts": "3.1.0",
+    "react-scripts": "3.1.2",
     "styletron-engine-atomic": "^1.4.0",
     "styletron-react": "^5.2.0"
   },
