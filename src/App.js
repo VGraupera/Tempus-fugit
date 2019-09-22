@@ -8,11 +8,15 @@ import {
   StyledNavigationItem as NavigationItem,
   StyledNavigationList as NavigationList
 } from "baseui/header-navigation";
+import { Provider } from 'react-redux'
 
 import DayLeft from "./components/DayLeft";
 import MonthLeft from "./components/MonthLeft";
 import QuarterLeft from "./components/QuarterLeft";
 import YearLeft from "./components/YearLeft";
+import Preferences from "./components/Preferences";
+
+import store from './store/store';
 
 const engine = new Styletron();
 const debug =
@@ -25,8 +29,10 @@ const Centered = styled("div", {
   height: "100%"
 });
 
+
 export default function App() {
   return (
+    <Provider store={store}>
     <StyletronProvider value={engine} debug={debug} debugAfterHydration>
       <BaseProvider theme={LightTheme}>
         <HeaderNavigation>
@@ -39,8 +45,10 @@ export default function App() {
           <MonthLeft />
           <QuarterLeft />
           <YearLeft />
+          <Preferences />
         </Centered>
       </BaseProvider>
     </StyletronProvider>
+    </Provider>
   );
 }

@@ -7,28 +7,20 @@ import {
   ModalButton
 } from "baseui/modal";
 import { Slider } from "baseui/slider";
+import { connect } from "react-redux";
 import Metric from "./Metric";
+import { setDailyHours } from "../actions";
 
-export default class DayLeft extends React.Component {
-  state = { isOpen: false, wakingHours: [0, 24] };
+class DayLeft extends React.Component {
+  state = { isOpen: false };
 
-  componentDidMount() {
-    const wakingHours = JSON.parse(localStorage.getItem("wakingHours"));
-    if (wakingHours) {
-      this.setState({ wakingHours });
-    }
-  }
   setOpen(value) {
     this.setState({ isOpen: value });
-  }
-  setWakingHours(value) {
-    this.setState({ wakingHours: value });
-    localStorage.setItem("wakingHours", JSON.stringify(value));
   }
 
   render() {
     let hour = new Date().getHours();
-    const { wakingHours } = this.state;
+    const { wakingHours } = this.props;
     if (hour < wakingHours[0]) hour = wakingHours[0];
     if (hour > wakingHours[1]) hour = wakingHours[1];
     const value = Math.floor(
@@ -47,11 +39,11 @@ export default class DayLeft extends React.Component {
           <ModalBody>
             Enter the hours in the day you want to track.
             <Slider
-              value={this.state.wakingHours}
+              value={this.props.wakingHours}
               max={24}
               min={0}
               step={0.5}
-              onChange={({ value }) => value && this.setWakingHours(value)}
+              onChange={({ value }) => value && this.props.setDailyHours(value)}
             />
           </ModalBody>
           <ModalFooter>
@@ -62,3 +54,24 @@ export default class DayLeft extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    wakingHours: state.days.dailyHours
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setDailyHours: val => {
+      dispatch(setDailyHours(val));
+    }
+  };
+};
+
+const SavedDay = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DayLeft);
+
+export default SavedDay;
