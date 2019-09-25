@@ -1,31 +1,35 @@
 import * as React from "react";
 import { Radio, RadioGroup } from "baseui/radio";
-import { connect } from "react-redux";
-import { setRemaining } from "../actions";
+import { Block } from "baseui/block";
 
-const Prefs = ({ showRemaining, setRemaining }) => {
+import { connect } from "react-redux";
+import { setTimeUsed } from "../actions";
+
+const Prefs = ({ timeUsed, setTimeUsed }) => {
   return (
-    <RadioGroup
-      name="radio group"
-      onChange={e => setRemaining(e.target.value)}
-      value={showRemaining}
-    >
-      <Radio value="0">Time Left</Radio>
-      <Radio value="1">Time Used</Radio>
-    </RadioGroup>
+    <Block paddingLeft="20px">
+      <RadioGroup
+        name="radio group"
+        onChange={e => setTimeUsed(e.target.value)}
+        value={timeUsed}
+      >
+        <Radio value="0">Time Left</Radio>
+        <Radio value="1">Time Used</Radio>
+      </RadioGroup>
+    </Block>
   );
 };
 
 const mapStateToProps = state => {
   return {
-    showRemaining: state.prefs.showRemaining
+    timeUsed: state.prefs.timeUsed
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    setRemaining: val => {
-      dispatch(setRemaining(val));
+    setTimeUsed: val => {
+      dispatch(setTimeUsed(val));
     }
   };
 };

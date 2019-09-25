@@ -1,14 +1,14 @@
-import { SET_REMAINING } from "../actions";
+import { SET_TIME_USED } from "../actions";
 
 const initialState = {
-  showRemaining: "0"
+    timeUsed: '0'
 };
 
 export default function preferencesReducer(state = initialState, action) {
   switch (action.type) {
-    case SET_REMAINING:
+    case SET_TIME_USED:
       return Object.assign({}, state, {
-        showRemaining: action.value
+        timeUsed: action.value
       });
     default:
       return state;

@@ -24,7 +24,9 @@ const narrowItemProps = {
 
 export default class Metric extends React.Component {
   render() {
-    const metricValue = 100 - this.props.value;
+    const metricValue = this.props.invert
+      ? this.props.value
+      : 100 - this.props.value;
     return (
       <FlexGrid
         flexGridColumnCount={2}

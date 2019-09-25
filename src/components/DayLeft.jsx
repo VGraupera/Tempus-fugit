@@ -23,7 +23,7 @@ class DayLeft extends React.Component {
     const { wakingHours } = this.props;
     if (hour < wakingHours[0]) hour = wakingHours[0];
     if (hour > wakingHours[1]) hour = wakingHours[1];
-    const value = Math.floor(
+    let value = Math.floor(
       ((hour - wakingHours[0]) / (wakingHours[1] - wakingHours[0])) * 100
     );
 
@@ -32,6 +32,7 @@ class DayLeft extends React.Component {
         <Metric
           displayName="Day"
           value={value}
+          invert={this.props.timeUsed}
           onClick={() => this.setOpen(true)}
         />
         <Modal onClose={() => this.setOpen(false)} isOpen={this.state.isOpen}>
@@ -57,7 +58,8 @@ class DayLeft extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    wakingHours: state.days.dailyHours
+    wakingHours: state.days.dailyHours,
+    timeUsed: '1' === state.prefs.timeUsed
   };
 };
 
@@ -69,9 +71,9 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const SavedDay = connect(
+const DayContainer = connect(
   mapStateToProps,
   mapDispatchToProps
 )(DayLeft);
 
-export default SavedDay;
+export default DayContainer;

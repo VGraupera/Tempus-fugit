@@ -2,15 +2,15 @@
  * action types
  */
 
-export const SET_REMAINING = 'SET_REMAINING'
+export const SET_TIME_USED = 'SET_TIME_USED'
 export const SET_DAILY_HOURS = 'SET_DAILY_HOURS'
 
 /*
  * action creators
  */
 
-export function setRemaining(value) {
-  return { type: SET_REMAINING, value }
+export function setTimeUsed(value) {
+  return { type: SET_TIME_USED, value }
 }
 
 

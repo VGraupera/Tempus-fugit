@@ -1,8 +1,8 @@
 import * as React from "react";
-
+import { connect } from "react-redux";
 import Metric from "./Metric";
 
-export default class YearLeft extends React.Component {
+class QuarterLeft extends React.Component {
   state = { value: 0 };
 
   daysLeftInQuarter(d) {
@@ -32,6 +32,25 @@ export default class YearLeft extends React.Component {
     });
   }
   render() {
-    return <Metric displayName="Quarter" value={this.state.value} />;
+    return (
+      <Metric
+        displayName="Quarter"
+        invert={this.props.timeUsed}
+        value={this.state.value}
+      />
+    );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    timeUsed: '1' === state.prefs.timeUsed
+  };
+};
+
+const QuarterContainer = connect(
+  mapStateToProps,
+  null
+)(QuarterLeft);
+
+export default QuarterContainer;
