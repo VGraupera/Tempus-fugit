@@ -48,7 +48,7 @@ class DayLeft extends React.Component {
             />
           </ModalBody>
           <ModalFooter>
-            <ModalButton onClick={() => this.setOpen(false)}>Okay</ModalButton>
+            <ModalButton onClick={() => this.setOpen(false)}>OK</ModalButton>
           </ModalFooter>
         </Modal>
       </React.Fragment>
