@@ -11,6 +11,7 @@ import {
 import { Provider } from 'react-redux'
 
 import DayLeft from "./components/DayLeft";
+import WeekLeft from "./components/WeekLeft";
 import MonthLeft from "./components/MonthLeft";
 import QuarterLeft from "./components/QuarterLeft";
 import YearLeft from "./components/YearLeft";
@@ -42,6 +43,7 @@ export default function App() {
         </HeaderNavigation>
         <Centered>
           <DayLeft />
+          <WeekLeft />
           <MonthLeft />
           <QuarterLeft />
           <YearLeft />
