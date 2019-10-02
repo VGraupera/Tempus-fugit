@@ -33,7 +33,7 @@ const Centered = styled("div", {
 
 
 export default function App() {
-  ReactGA.initialize('G-DNPVT9QQDS');
+  ReactGA.initialize('UA-2153940-19');
   ReactGA.pageview('/homepage');
 
   return (
