@@ -6,8 +6,6 @@ const initialState = {
 };
 
 export default function preferencesReducer(state = initialState, action) {
-  console.log(action);
-  
   switch (action.type) {
     case SET_TIME_USED:
       return Object.assign({}, state, {
@@ -15,7 +13,7 @@ export default function preferencesReducer(state = initialState, action) {
       });
     case SET_WEEKDAYS_ONLY:
       console.log("SET_WEEKDAYS");
-      
+
       return Object.assign({}, state, {
         weekDaysOnly: action.value
       });
