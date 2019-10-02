@@ -24,9 +24,30 @@ const narrowItemProps = {
 
 export default class Metric extends React.Component {
   render() {
-    const metricValue = this.props.invert
-      ? this.props.value
-      : 100 - this.props.value;
+    const { invert, value } = this.props;
+    const metricValue = invert ? value : 100 - value;
+    const barColor = (theme, value) => {
+      let color = theme.colors.positive;
+
+      // invert means show amount used vs remaining
+      if (invert) {
+        if (value > 80) {
+          color = theme.colors.warning;
+        }
+        if (value > 90) {
+          color = theme.colors.negative;
+        }
+      } else {
+        if (value < 20) {
+          color = theme.colors.warning;
+        }
+        if (value < 10) {
+          color = theme.colors.negative;
+        }
+      }
+
+      return color;
+    };
     return (
       <FlexGrid
         flexGridColumnCount={2}
@@ -40,15 +61,8 @@ export default class Metric extends React.Component {
             overrides={{
               BarProgress: {
                 style: ({ $theme, $value }) => {
-                  let color = $theme.colors.positive;
-                  if ($value < 20) {
-                    color = $theme.colors.warning;
-                  }
-                  if ($value < 10) {
-                    color = $theme.colors.negative;
-                  }
                   return {
-                    backgroundColor: color
+                    backgroundColor: barColor($theme, $value)
                   };
                 }
               },
