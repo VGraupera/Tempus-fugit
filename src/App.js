@@ -9,6 +9,7 @@ import {
   StyledNavigationList as NavigationList
 } from "baseui/header-navigation";
 import { Provider } from 'react-redux'
+import ReactGA from 'react-ga';
 
 import DayLeft from "./components/DayLeft";
 import WeekLeft from "./components/WeekLeft";
@@ -32,6 +33,9 @@ const Centered = styled("div", {
 
 
 export default function App() {
+  ReactGA.initialize('G-DNPVT9QQDS');
+  ReactGA.pageview('/homepage');
+
   return (
     <Provider store={store}>
     <StyletronProvider value={engine} debug={debug} debugAfterHydration>
