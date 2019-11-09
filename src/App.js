@@ -15,6 +15,7 @@ import DayLeft from "./components/DayLeft";
 import WeekLeft from "./components/WeekLeft";
 import MonthLeft from "./components/MonthLeft";
 import QuarterLeft from "./components/QuarterLeft";
+import HalfLeft from "./components/HalfLeft";
 import YearLeft from "./components/YearLeft";
 import Preferences from "./components/Preferences";
 
@@ -50,6 +51,7 @@ export default function App() {
           <WeekLeft />
           <MonthLeft />
           <QuarterLeft />
+          <HalfLeft />
           <YearLeft />
           <Preferences />
         </Centered>
