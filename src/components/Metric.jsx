@@ -54,6 +54,9 @@ export default class Metric extends React.Component {
         flexGridColumnGap="scale500"
         flexGridRowGap="scale800"
       >
+        <FlexGridItem {...narrowItemProps} onClick={this.props.onClick}>
+          <label>{`${this.props.displayName}: ${metricValue}%`}</label>
+        </FlexGridItem>
         <FlexGridItem {...itemProps} onClick={this.props.onClick}>
           <ProgressBar
             value={metricValue}
@@ -73,9 +76,6 @@ export default class Metric extends React.Component {
               }
             }}
           />
-        </FlexGridItem>
-        <FlexGridItem {...narrowItemProps}>
-          <label>{`${this.props.displayName}: ${metricValue}%`}</label>
         </FlexGridItem>
       </FlexGrid>
     );
