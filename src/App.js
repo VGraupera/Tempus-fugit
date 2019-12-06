@@ -17,6 +17,7 @@ import MonthLeft from "./components/MonthLeft";
 import QuarterLeft from "./components/QuarterLeft";
 import HalfLeft from "./components/HalfLeft";
 import YearLeft from "./components/YearLeft";
+import CustomLeft from "./components/CustomLeft";
 import Preferences from "./components/Preferences";
 
 import store from './store/store';
@@ -53,6 +54,7 @@ export default function App() {
           <QuarterLeft />
           <HalfLeft />
           <YearLeft />
+          <CustomLeft />
           <Preferences />
         </Centered>
       </BaseProvider>

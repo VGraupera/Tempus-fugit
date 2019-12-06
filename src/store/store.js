@@ -11,7 +11,8 @@ const store = createStore(
 store.subscribe(() => {
   saveState({
     prefs: store.getState().prefs,
-    days: store.getState().days
+    days: store.getState().days,
+    custom: store.getState().custom,
   });
 });
 
