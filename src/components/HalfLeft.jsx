@@ -9,21 +9,21 @@ class HalfLeft extends React.Component {
     let currentDate = new Date();
     let startDate = new Date();
     let endDate = new Date();
-    
-    if (currentDate.getMonth()<=5) {
-        startDate.setMonth(0)
-        startDate.setDate(1)
-        endDate.setMonth(5)
-        endDate.setDate(30)
+
+    if (currentDate.getMonth() <= 5) {
+      startDate.setMonth(0);
+      startDate.setDate(1);
+      endDate.setMonth(5);
+      endDate.setDate(30);
     } else {
-        startDate.setMonth(5)
-        startDate.setDate(30)
-        endDate.setMonth(11)
-        endDate.setDate(31)
+      startDate.setMonth(5);
+      startDate.setDate(30);
+      endDate.setMonth(11);
+      endDate.setDate(31);
     }
-    
-    var diffInTime = currentDate.getTime() - startDate.getTime(); 
-    var timePeriod = endDate.getTime() - startDate.getTime(); 
+
+    var diffInTime = currentDate.getTime() - startDate.getTime();
+    var timePeriod = endDate.getTime() - startDate.getTime();
 
     this.setState({ value: Math.floor((diffInTime / timePeriod) * 100) });
   }
@@ -44,9 +44,6 @@ const mapStateToProps = state => {
   };
 };
 
-const HalfContainer = connect(
-  mapStateToProps,
-  null
-)(HalfLeft);
+const HalfContainer = connect(mapStateToProps, null)(HalfLeft);
 
 export default HalfContainer;
