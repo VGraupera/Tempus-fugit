@@ -1,6 +1,8 @@
 import * as React from "react";
 import { ProgressBar } from "baseui/progress-bar";
 import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
+import { styled } from "styletron-react";
+
 
 const itemProps = {
   height: "scale1000",
@@ -21,6 +23,8 @@ const narrowItemProps = {
     }
   }
 };
+
+const MetricLabel = styled("label", { textAlign: "right" });
 
 export default class Metric extends React.Component {
   render() {
@@ -55,7 +59,7 @@ export default class Metric extends React.Component {
         flexGridRowGap="scale800"
       >
         <FlexGridItem {...narrowItemProps} onClick={this.props.onClick}>
-          <label>{`${this.props.displayName}: ${metricValue}%`}</label>
+          <MetricLabel>{`${this.props.displayName}: ${metricValue}%`}</MetricLabel>
         </FlexGridItem>
         <FlexGridItem {...itemProps} onClick={this.props.onClick}>
           <ProgressBar
