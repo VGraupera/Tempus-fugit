@@ -12,8 +12,6 @@ export default function preferencesReducer(state = initialState, action) {
         timeUsed: action.value
       });
     case SET_WEEKDAYS_ONLY:
-      console.log("SET_WEEKDAYS");
-
       return Object.assign({}, state, {
         weekDaysOnly: action.value
       });
