@@ -82,12 +82,14 @@ class CustomLeft extends React.Component {
               value={[this.getDateValue(this.props.dates[0])]}
               onChange={({ date }) => this.setDate(date, 0)}
               maxDate={this.getDateValue(this.props.dates[1])}
+              formatString="MM/dd/yyyy"
             />
             <label>End date</label>
             <Datepicker
               value={[this.getDateValue(this.props.dates[1])]}
               onChange={({ date }) => this.setDate(date, 1)}
               minDate={this.getDateValue(this.props.dates[0])}
+              formatString="MM/dd/yyyy"
             />
           </ModalBody>
           <ModalFooter>
